@@ -1,0 +1,56 @@
+{
+    "name": "soloterm/dumps",
+    "description": "A Laravel command to intercept dumps from your Laravel application.",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Aaron Francis",
+            "email": "aarondfrancis@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.2",
+        "illuminate/foundation": "^10|^11|^12",
+        "illuminate/support": "^10|^11|^12",
+        "illuminate/console": "^10|^11|^12"
+    },
+    "require-dev": {
+        "illuminate/process": "^10|^11|^12",
+        "phpunit/phpunit": "^10.5|^11",
+        "orchestra/testbench": "^8.29|^9.5|^10"
+    },
+    "autoload": {
+        "psr-4": {
+            "SoloTerm\\Dumps\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "SoloTerm\\Dumps\\Tests\\": "tests/",
+            "App\\": "workbench/app/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "SoloTerm\\Dumps\\Providers\\DumpServiceProvider"
+            ]
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "dev": [
+        ]
+    }
+}

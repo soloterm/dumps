@@ -1,0 +1,15 @@
+artisan
+.idea
+.phpunit.result.cache
+build
+composer.lock
+coverage
+phpunit.xml
+phpstan.neon
+vendor
+node_modules
+tests/Screenshots
+
+docs/*.blade.php
+docs/**/*.blade.php
+.phpunit.cache/test-results
