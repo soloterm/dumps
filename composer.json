@@ -12,7 +12,6 @@
     "minimum-stability": "dev",
     "require": {
         "php": "^8.2",
-        "illuminate/foundation": "^10|^11|^12",
         "illuminate/support": "^10|^11|^12",
         "illuminate/console": "^10|^11|^12"
     },
