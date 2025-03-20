@@ -18,7 +18,7 @@ class BasicTest extends Base
     #[Test]
     public function basic_test_only()
     {
-        $server = Process::start(['php','vendor/bin/testbench','solo:dumps']);
+        $server = Process::start(['php', 'vendor/bin/testbench', 'solo:dumps']);
 
         sleep(1);
         dump($uuid = Str::uuid()->toString());
