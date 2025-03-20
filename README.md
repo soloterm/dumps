@@ -1,10 +1,10 @@
-# Dumps for Laravel
+# Solo Dumps for Laravel
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/soloterm/dumps)](https://packagist.org/packages/soloterm/dumps)
 [![Total Downloads](https://img.shields.io/packagist/dt/soloterm/dumps)](https://packagist.org/packages/soloterm/dumps)
 [![License](https://img.shields.io/packagist/l/soloterm/dumps)](https://packagist.org/packages/soloterm/dumps)
 
-Dumps for Laravel is a package that intercepts and collects `dump()` calls from your Laravel application and displays
+Solo Dumps for Laravel is a package that intercepts and collects `dump()` calls from your Laravel application and displays
 them in a dedicated terminal window. This eliminates the need to clutter your browser or API responses with debug
 output.
 
