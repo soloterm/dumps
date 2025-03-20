@@ -69,6 +69,8 @@ readonly class CustomDumper
 
     protected function portOpen()
     {
+        return true;
+
         $parts = parse_url(static::dumpServerHost());
 
         $host = $parts['host'] ?? null;
@@ -78,9 +80,10 @@ readonly class CustomDumper
 
         if ($fp) {
             fclose($fp);
+            return true;
         }
 
-        return $fp;
+        return false;
     }
 
     protected function makeSourceResolvingDumper(): CliDumper
