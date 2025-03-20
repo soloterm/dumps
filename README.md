@@ -1,22 +1,17 @@
-<p align="center">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/soloterm/solo/refs/heads/main/art/solo_logo_dark.png">
-      <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/soloterm/solo/refs/heads/main/art/solo_logo_light.png">
-      <img alt="Dumps for Laravel" src="https://raw.githubusercontent.com/soloterm/solo/refs/heads/main/art/solo_logo_light.png" style="max-width: 80%; height: auto;">
-    </picture>
-</p>
-
-<h3 align="center">Intercept dump() calls from your Laravel application</h3>
-
----
-
 # Dumps for Laravel
 
-## About
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/soloterm/dumps)](https://packagist.org/packages/soloterm/dumps)
+[![Total Downloads](https://img.shields.io/packagist/dt/soloterm/dumps)](https://packagist.org/packages/soloterm/dumps)
+[![License](https://img.shields.io/packagist/l/soloterm/dumps)](https://packagist.org/packages/soloterm/dumps)
 
 Dumps for Laravel is a package that intercepts and collects `dump()` calls from your Laravel application and displays
 them in a dedicated terminal window. This eliminates the need to clutter your browser or API responses with debug
 output.
+
+![Screenshot](https://github.com/soloterm/dumps/blob/main/art/screenshot.png?raw=true)
+
+This library was built to support [Solo](https://github.com/soloterm/solo), your all-in-one Laravel command to tame
+local development.
 
 This package is especially useful when:
 
