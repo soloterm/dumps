@@ -20,7 +20,7 @@ use Symfony\Component\VarDumper\Dumper\ServerDumper;
 use Symfony\Component\VarDumper\VarDumper;
 use Throwable;
 
-readonly class CustomDumper
+class CustomDumper
 {
     public static function register($basePath, $compiledViewPath): static
     {
@@ -67,7 +67,7 @@ readonly class CustomDumper
         });
     }
 
-    protected function portOpen()
+    protected function portOpen(): bool
     {
         $parts = parse_url(static::dumpServerHost());
 
