@@ -50,7 +50,9 @@ readonly class CustomDumper
             ]);
 
             try {
-                $response = $server->dump($data);
+                // We have to manually check the port to see if it's open. If you don't, the
+                // ServerDumper drops a dump before it switches to the fallback dumper.
+                $response = $this->portOpen() ? $server->dump($data) : 'server_dump_failed';
             } catch (Throwable $e) {
                 $response = 'server_dump_failed';
             }
@@ -63,6 +65,22 @@ readonly class CustomDumper
                 }
             }
         });
+    }
+
+    protected function portOpen()
+    {
+        $parts = parse_url(static::dumpServerHost());
+
+        $host = $parts['host'] ?? null;
+        $port = $parts['port'] ?? null;
+
+        $fp = @fsockopen($host, $port, $errno, $errstr, 0.1);
+
+        if ($fp) {
+            fclose($fp);
+        }
+
+        return $fp;
     }
 
     protected function makeSourceResolvingDumper(): CliDumper

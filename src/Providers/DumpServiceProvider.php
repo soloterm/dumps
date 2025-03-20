@@ -11,6 +11,7 @@ namespace SoloTerm\Dumps\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use SoloTerm\Dumps\Console\Commands\Dumps;
+use SoloTerm\Dumps\Console\Commands\DumpTestOnly;
 use SoloTerm\Dumps\Support\CustomDumper;
 
 class DumpServiceProvider extends ServiceProvider
@@ -26,7 +27,8 @@ class DumpServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                Dumps::class
+                Dumps::class,
+                DumpTestOnly::class,
             ]);
         }
     }

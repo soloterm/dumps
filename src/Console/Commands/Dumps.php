@@ -45,5 +45,6 @@ class Dumps extends Command
 
             $dumper->dumpWithSource($data);
         });
+
     }
 }
