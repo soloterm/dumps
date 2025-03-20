@@ -69,8 +69,6 @@ readonly class CustomDumper
 
     protected function portOpen()
     {
-        return true;
-
         $parts = parse_url(static::dumpServerHost());
 
         $host = $parts['host'] ?? null;

@@ -18,29 +18,29 @@ class BasicTest extends Base
     #[Test]
     public function basic_test_only()
     {
-        $process = Process::start('php vendor/bin/testbench solo:dumps');
+        $server = Process::start('php vendor/bin/testbench solo:dumps');
 
         sleep(1);
         dump($uuid = Str::uuid()->toString());
 
         sleep(1);
-        $process->signal(SIGTERM);
+        $server->signal(SIGTERM);
 
-        $process->wait();
+        $server->wait();
 
         // Right server
-        $this->assertStringContainsString('tcp://127.0.0.1:9984', $process->output());
+        $this->assertStringContainsString('tcp://127.0.0.1:9984', $server->output());
         // Right output
-        $this->assertStringContainsString($uuid, $process->output());
+        $this->assertStringContainsString($uuid, $server->output());
         // Right context
-        $this->assertStringContainsString('BasicTest.php:24', $process->output());
+        $this->assertStringContainsString('BasicTest.php:24', $server->output());
 
         $uuid = Str::uuid()->toString();
-        $process = Process::start("php vendor/bin/testbench solo:dump-test-only --uuid=$uuid");
-        $process->wait();
+        $dump = Process::start("php vendor/bin/testbench solo:dump-test-only --uuid=$uuid");
+        $dump->wait();
 
         // Output should have been restored
-        $this->assertStringContainsString($uuid, $process->output());
+        $this->assertStringContainsString($uuid, $dump->output());
     }
 
     #[Test]
@@ -53,6 +53,13 @@ class BasicTest extends Base
         // Start the loop command
         $loop = Process::start('php vendor/bin/testbench solo:dump-test-only --loop');
         sleep(2);
+
+        ob_get_clean();
+
+        echo json_encode($server->running());
+        echo PHP_EOL;
+        echo $server->output();
+        echo PHP_EOL;
 
         // Kill the dump server after a few seconds
         $server->signal(SIGTERM);
