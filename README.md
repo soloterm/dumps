@@ -52,6 +52,7 @@ browser or API response.
 - Formats the output using Laravel's CLI dumper for better readability
 - Works with APIs, background jobs, and other contexts where dumps are normally hard to see
 - Preserves all the functionality of Laravel's dump helper
+- Restores regular dump functionality when the command is stopped
 
 ### Works with Solo for Laravel
 
@@ -80,12 +81,14 @@ return [
 ];
 ```
 
+There is no dedicated `dumps` config file. You can either create a `solo.php` and put the `dump_server_host` in there, or add it to your existing `solo.php` file.
+
 ## How It Works
 
 The package works by:
 
 1. Registering a custom var dumper handler that captures dump calls
-2. Resolving the source file and line number of the dump
+2. Resolving the source file and line number of the dump before sending to the server
 3. Sending the dump data to a server running in a separate process
 4. Displaying the formatted dump with source information in the terminal
 
