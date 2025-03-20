@@ -78,6 +78,7 @@ readonly class CustomDumper
 
         if ($fp) {
             fclose($fp);
+
             return true;
         }
 
