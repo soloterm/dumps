@@ -11,24 +11,22 @@ namespace SoloTerm\Dumps\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use SoloTerm\Dumps\Console\Commands\Dumps;
-use SoloTerm\Dumps\Console\Commands\DumpTestOnly;
 use SoloTerm\Dumps\Support\CustomDumper;
 
 class DumpServiceProvider extends ServiceProvider
 {
-    public function register()
+    public function register(): void
     {
         //
     }
 
-    public function boot()
+    public function boot(): void
     {
         CustomDumper::register($this->app->basePath(), $this->app['config']->get('view.compiled'));
 
         if ($this->app->runningInConsole()) {
             $this->commands([
                 Dumps::class,
-                DumpTestOnly::class,
             ]);
         }
     }

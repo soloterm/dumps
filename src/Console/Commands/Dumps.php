@@ -22,7 +22,7 @@ class Dumps extends Command
 
     protected $description = 'Collect dumps from your Laravel application.';
 
-    public function handle()
+    public function handle(): void
     {
         $dumper = new CliDumper(
             output: $this->getOutput()->getOutput(),

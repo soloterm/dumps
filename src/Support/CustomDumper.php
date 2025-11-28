@@ -10,7 +10,6 @@
 namespace SoloTerm\Dumps\Support;
 
 use Illuminate\Foundation\Console\CliDumper;
-use Illuminate\Foundation\Console\CliDumper as LaravelCliDumper;
 use Symfony\Component\Console\Output\StreamOutput;
 use Symfony\Component\VarDumper\Caster\ReflectionCaster;
 use Symfony\Component\VarDumper\Cloner\Data;
@@ -22,7 +21,7 @@ use Throwable;
 
 class CustomDumper
 {
-    public static function register($basePath, $compiledViewPath): static
+    public static function register(string $basePath, ?string $compiledViewPath): static
     {
         return new static($basePath, $compiledViewPath);
     }
@@ -32,7 +31,7 @@ class CustomDumper
         return config()->get('solo.dump_server_host', 'tcp://127.0.0.1:9984');
     }
 
-    public function __construct(public string $basePath, public string $compiledViewPath)
+    public function __construct(public string $basePath, public ?string $compiledViewPath)
     {
         $cloner = new VarCloner;
         $cloner->addCasters(ReflectionCaster::UNSET_CLOSURE_FILE_INFO);
@@ -89,7 +88,7 @@ class CustomDumper
     {
         $output = new StreamOutput(fopen('php://memory', 'w'));
 
-        return new LaravelCliDumper($output, $this->basePath, $this->compiledViewPath);
+        return new CliDumper($output, $this->basePath, $this->compiledViewPath);
     }
 
     protected function makeFallbackDumper(): DataDumperInterface
