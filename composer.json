@@ -10,6 +10,7 @@
         }
     ],
     "minimum-stability": "dev",
+    "prefer-stable": true,
     "require": {
         "php": "^8.1",
         "illuminate/support": "^10|^11|^12",
@@ -48,8 +49,6 @@
         "serve": [
             "Composer\\Config::disableProcessTimeout",
             "@php vendor/bin/testbench serve --ansi"
-        ],
-        "dev": [
         ]
     }
 }

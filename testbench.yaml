@@ -1,5 +1,6 @@
 providers:
   - SoloTerm\Dumps\Providers\DumpServiceProvider
+  - SoloTerm\Dumps\Tests\Support\DumpTestServiceProvider
   - App\Providers\AppServiceProvider
 
 migrations: false

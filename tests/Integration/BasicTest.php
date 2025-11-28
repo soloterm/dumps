@@ -54,8 +54,6 @@ class BasicTest extends Base
         $loop = Process::start('php vendor/bin/testbench solo:dump-test-only --loop');
         sleep(2);
 
-        ob_get_clean();
-
         echo json_encode($server->running());
         echo PHP_EOL;
         echo $server->output();

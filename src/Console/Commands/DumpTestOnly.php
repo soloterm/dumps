@@ -23,7 +23,7 @@ class DumpTestOnly extends Command
         $this->setHidden();
     }
 
-    public function handle()
+    public function handle(): void
     {
         if ($this->option('uuid')) {
             dump($this->option('uuid'));
