@@ -27,7 +27,7 @@ php vendor/bin/testbench solo:dumps
 
 ### Data Flow
 
-```
+```text
 dump() call in app
     ↓
 CustomDumper (VarDumper handler)
