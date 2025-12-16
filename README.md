@@ -112,10 +112,8 @@ it's not included in production.
 
 This is free! If you want to support me:
 
-- Sponsor my open source work: [aaronfrancis.com/backstage](https://aaronfrancis.com/backstage)
 - Check out my courses:
-    - [Mastering Postgres](https://masteringpostgres.com)
-    - [High Performance SQLite](https://highperformancesqlite.com)
+    - [Database School](https://databaseschool.com)
     - [Screencasting](https://screencasting.com)
 - Help spread the word about things I make
 
@@ -127,3 +125,13 @@ Dumps for Laravel was developed by Aaron Francis. If you like it, please let me 
 - Website: https://aaronfrancis.com
 - YouTube: https://youtube.com/@aarondfrancis
 - GitHub: https://github.com/aarondfrancis
+
+## Related Projects
+
+- [Solo](https://github.com/soloterm/solo) - All-in-one Laravel command for local development
+- [Screen](https://github.com/soloterm/screen) - Pure PHP terminal renderer
+- [Grapheme](https://github.com/soloterm/grapheme) - Unicode grapheme width calculator
+- [Notify](https://github.com/soloterm/notify) - PHP package for desktop notifications via OSC escape sequences
+- [Notify Laravel](https://github.com/soloterm/notify-laravel) - Laravel integration for soloterm/notify
+- [TNotify](https://github.com/soloterm/tnotify) - Standalone, cross-platform CLI for desktop notifications
+- [VTail](https://github.com/soloterm/vtail) - Vendor-aware tail for Laravel logs

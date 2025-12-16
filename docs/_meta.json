@@ -1,0 +1,12 @@
+{
+    "title": "Dumps",
+    "description": "Intercept dump() calls and display them in a dedicated terminal",
+    "pages": [
+        { "slug": "index", "title": "Introduction" },
+        { "slug": "installation", "title": "Installation" },
+        { "slug": "usage", "title": "Usage" },
+        { "slug": "configuration", "title": "Configuration" },
+        { "slug": "solo-integration", "title": "Solo Integration" },
+        { "slug": "how-it-works", "title": "How It Works" }
+    ]
+}
