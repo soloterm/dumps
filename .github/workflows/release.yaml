@@ -1,10 +1,11 @@
 name: Release
+run-name: Release ${{ startsWith(inputs.version, 'v') && inputs.version || format('v{0}', inputs.version) }}
 
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to release (e.g., 1.1.1)'
+        description: 'Version to release (e.g., v1.1.1)'
         required: true
         type: string
 
@@ -20,11 +21,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Normalize version
+        run: |
+          INPUT_VERSION="${{ inputs.version }}"
+          VERSION="${INPUT_VERSION#v}"
+
+          if ! [[ "$VERSION" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]; then
+            echo "Invalid version '$INPUT_VERSION'. Expected X.Y.Z or vX.Y.Z"
+            exit 1
+          fi
+
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "TAG=v$VERSION" >> "$GITHUB_ENV"
+
       - name: Extract release notes from CHANGELOG
         id: changelog
         run: |
-          VERSION="${{ inputs.version }}"
-
           # Extract the section for this version from CHANGELOG.md
           # Matches from "## [X.Y.Z]" until the next "## [" or end of file
           NOTES=$(awk -v ver="$VERSION" '
@@ -48,14 +60,14 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git tag -a "v${{ inputs.version }}" -m "Release v${{ inputs.version }}"
-          git push origin "v${{ inputs.version }}"
+          git tag -a "$TAG" -m "Release $TAG"
+          git push origin "$TAG"
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v${{ inputs.version }}
-          name: v${{ inputs.version }}
+          tag_name: ${{ env.TAG }}
+          name: ${{ env.TAG }}
           body_path: release_notes.md
           draft: false
           prerelease: false

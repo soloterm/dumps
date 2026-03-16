@@ -14,10 +14,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Made `compiledViewPath` nullable to handle edge cases
 - Moved `DumpTestOnly` command to test-only service provider
 - Added `prefer-stable: true` to composer.json
+- Added Laravel 13 compatibility to Composer constraints and the test matrix
+- Updated the release workflow to accept `vX.Y.Z` inputs and use the normalized tag in run names and releases
 
 ### Fixed
 - Fixed risky test warning by removing `ob_get_clean()` call in BasicTest
 - Fixed `.phpunit.cache` gitignore pattern to ignore entire directory
+- Fixed changelog release note parsing when the workflow is triggered with a `v`-prefixed version
 
 ### Removed
 - Removed redundant `CliDumper` import alias
