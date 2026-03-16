@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added `prefer-stable: true` to composer.json
 - Added Laravel 13 compatibility to Composer constraints and the test matrix
 - Updated the release workflow to accept `vX.Y.Z` inputs and use the normalized tag in run names and releases
+- Updated the release workflow to promote `[Unreleased]` into the requested version before tagging
 
 ### Fixed
 - Fixed risky test warning by removing `ob_get_clean()` call in BasicTest
